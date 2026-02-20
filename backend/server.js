@@ -26,6 +26,14 @@ app.get("/", (req, res) => {
   res.send("Backend de Autos funcionando correctamente 🚀");
 });
 
+app.get("/autos", (req, res) => {
+  res.json([
+    { marca: "Toyota", modelo: "Corolla", año: 2022, precio: 15000 },
+    { marca: "Ford", modelo: "Focus", año: 2021, precio: 13000 },
+    { marca: "Chevrolet", modelo: "Cruze", año: 2023, precio: 18000 }
+  ]);
+});
+
 const PORT = process.env.PORT || 3000;
 
 

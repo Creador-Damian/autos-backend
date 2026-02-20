@@ -1,4 +1,4 @@
-fetch("http://localhost:3000/autos")
+fetch("https://autos-backend-8wzv.onrender.com/autos")
     .then(response => response.json())
     .then(data => {
         const contenedor = document.getElementById("vehiculos");
