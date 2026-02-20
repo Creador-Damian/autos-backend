@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gastón Automotores</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <header>
+    <img src="logo.jpeg" alt="Logo de la empresa" class="logo">
+    <h1>Gastón Automotores</h1>
+    <p>La fábrica de la felicidad</p>
+</header>
+<section class="showroom">
+    <div class="overlay">
+        <h2>Catálogo de la felicidad</h2>
+        <p>Descubrí nuestra selección exclusiva de vehículos </p>
+        <a href="#vehiculos" class="btn-showroom">Ver Vehículos</a>
+    </div>
+</section>
+<p class="confianza">✔ Transparencia en cada operación | ✔ Atención personalizada | ✔ Seguridad garantizada</p>
+
+<section class="nosotros">
+    <h2>Sobre Nosotros</h2>
+    <p>
+        En <strong>Gastón Automotores</strong> trabajamos con compromiso,
+        transparencia y atención personalizada. 
+        Nuestro objetivo es ayudarte a encontrar el vehículo ideal 
+        con confianza y seguridad.
+    </p>
+    <p>
+        Nos encontramos en Corrientes, ofreciendo vehículos seleccionados 
+        y asesoramiento profesional en cada operación.
+    </p>
+</section>
+<section class="local">
+    <h2>Nuestro Local</h2>
+    <img src="local.png" alt="Frente de Gastón Automotores">
+</section>
+<section class="elegirnos">
+    <h2>¿Por qué elegirnos?</h2>
+
+    <div class="beneficios">
+        <div class="beneficio">
+            <h3>✔ Transparencia</h3>
+            <p>Operaciones claras, sin sorpresas y con asesoramiento honesto.</p>
+        </div>
+
+        <div class="beneficio">
+            <h3>✔ Atención personalizada</h3>
+            <p>Te acompañamos en todo el proceso de compra o venta.</p>
+        </div>
+
+        <div class="beneficio">
+            <h3>✔ Vehículos seleccionados</h3>
+            <p>Unidades revisadas y listas para transferir con seguridad.</p>
+        </div>
+    </div>
+</section>
+<div class="buscador">
+    <input type="text" id="buscadorInput" placeholder="Buscar por marca, modelo o año...">
+</div>
+<section class="filtros">
+    <button onclick="filtrarAutos('todos')">Todos</button>
+    <button onclick="filtrarAutos('toyota')">Toyota</button>
+    <button onclick="filtrarAutos('Ford')">Ford</button>
+    <button onclick="filtrarAutos('volkswagen')">Volkswagen</button>
+    <button onclick="filtrarAutos('Jeep')">Jeep</button>
+    <button onclick="filtrarAutos('Citroen')">Citroen</button>
+</section>
+
+
+    <section id="vehiculos" class="autos">
+    </section>
+
+
+<div class="paginacion" id="paginacion"></div>
+
+    </section>
+<section class="contacto">
+    <h2>Contacto</h2>
+
+    <div class="contacto-contenido">
+
+        <div class="info-contacto">
+            <p>📧 <strong>E-mail:</strong> gastonautomotores@hotmail.com</p>
+            <p>📱 <strong>WhatsApp:</strong> 
+                <a href="https://wa.me/543794650091" target="_blank">
+                    379 465 0091
+                </a>
+            </p>
+            <p>📍 <strong>Dirección:</strong><br>
+                Avenida Independencia 4973<br>
+                Corrientes, Argentina
+            </p>
+
+            <div class="mapa">
+                <iframe 
+                    src="https://www.google.com/maps?q=Avenida+Independencia+4973+Corrientes+Argentina&output=embed"
+                    width="100%" 
+                    height="250" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="formulario">
+            <h3>Envíanos un mensaje</h3>
+          <form id="form-contacto">
+    <input type="text" id="nombre" placeholder="Nombre" required>
+    <input type="email" id="email" placeholder="Correo electrónico" required>
+    <textarea id="mensaje" placeholder="Tu mensaje..." rows="4" required></textarea>
+    <button type="submit">Enviar Mensaje</button>
+</form>
+
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Gastón Automotores - Todos los derechos reservados</p>
+</footer>
+
+<script src="script.js"></script>
+<a href="https://wa.me/543794650091" class="whatsapp-float" target="_blank">
+    💬
+</a>
+
+</body>
+</html>
+

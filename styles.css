@@ -1,0 +1,391 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background-color: #0f0f0f;
+    color: #f5f5f5;
+}
+header {
+    background: linear-gradient(90deg, #000000, #1a1a1a);
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 2px solid #c9a227;
+}
+
+
+.autos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 60px;
+}
+
+.auto {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.6);
+    text-align: center;
+    width: 300px;
+    transition: transform 0.3s ease;
+    border: 1px solid #2c2c2c;
+    .auto:hover {
+    transform: scale(1.05);
+}
+
+}
+
+.auto img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+button {
+    background-color: #c9a227;
+    color: black;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #e6c200;
+}
+
+.logo {
+    width: 280px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 42px;
+    letter-spacing: 2px;
+    color: #c9a227;
+}
+.showroom {
+    background: url("showroom.jpeg") no-repeat center center/cover;
+    height: 80vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.showroom h2 {
+    font-size: 48px;
+    color: #c9a227;
+    margin-bottom: 20px;
+}
+
+.showroom p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.btn-showroom {
+    background-color: #c9a227;
+    color: black;
+    padding: 14px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-showroom:hover {
+    background-color: #e6c200;
+}
+.contacto {
+    background-color: #111;
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 2px solid #c9a227;
+}
+
+.contacto h2 {
+    color: #c9a227;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.info-contacto p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.info-contacto a {
+    color: #c9a227;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.info-contacto a:hover {
+    color: #e6c200;
+}
+
+.mapa {
+    margin-top: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.contacto {
+    background-color: #0f0f0f;
+    padding: 70px 20px;
+    border-top: 2px solid #c9a227;
+}
+
+.contacto h2 {
+    text-align: center;
+    color: #c9a227;
+    font-size: 38px;
+    margin-bottom: 50px;
+}
+
+.contacto-contenido {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.info-contacto {
+    max-width: 400px;
+    font-size: 18px;
+}
+
+.info-contacto a {
+    color: #c9a227;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.info-contacto a:hover {
+    color: #e6c200;
+}
+
+.formulario {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.6);
+    width: 350px;
+}
+
+.formulario h3 {
+    color: #c9a227;
+    margin-bottom: 20px;
+}
+
+.formulario input,
+.formulario textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.formulario button {
+    width: 100%;
+}
+
+footer {
+    background: #000;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    border-top: 1px solid #222;
+}
+.nosotros {
+    background-color: #1a1a1a;
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.nosotros h2 {
+    color: #c9a227;
+    font-size: 36px;
+    margin-bottom: 25px;
+}
+
+.nosotros p {
+    max-width: 800px;
+    margin: 10px auto;
+    font-size: 18px;
+    line-height: 1.6;
+}
+.confianza {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #ddd;
+    text-align: center;
+}
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    font-size: 28px;
+    padding: 15px 18px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.4);
+    z-index: 1000;
+}
+.local {
+    background-color: #111;
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.local h2 {
+    color: #c9a227;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.local img {
+    width: 50%;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 30px rgba(0,0,0,0.6);
+}
+
+.elegirnos {
+    background-color: #1a1a1a;
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.elegirnos h2 {
+    color: #c9a227;
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+
+.beneficios {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.beneficio {
+    background: #111;
+    padding: 30px;
+    border-radius: 15px;
+    width: 280px;
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+}
+
+.beneficio:hover {
+    transform: translateY(-10px);
+}
+
+.beneficio h3 {
+    color: #c9a227;
+    margin-bottom: 15px;
+}
+.btn-auto {
+    display: inline-block;
+    background-color: #c9a227;
+    color: black;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-auto:hover {
+    background-color: #e6c200;
+}
+.filtros {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.filtros button {
+    background-color: #1a1a1a;
+    color: #c9a227;
+    border: 1px solid #c9a227;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filtros button:hover {
+    background-color: #c9a227;
+    color: black;
+}
+.buscador {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.buscador {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.buscador input {
+    width: 60%;
+    max-width: 500px;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #c9a227;
+    background-color: #1a1a1a;
+    color: white;
+    font-size: 16px;
+}
+.paginacion {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.paginacion button {
+    background-color: #1a1a1a;
+    color: #c9a227;
+    border: 1px solid #c9a227;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.paginacion button:hover {
+    background-color: #c9a227;
+    color: black;
+}
+
+.paginacion button.activo {
+    background-color: #c9a227;
+    color: black;
+}
+.link-detalle {
+    color: #c9a227;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.link-detalle:hover {
+    color: #e6c200;
+}
