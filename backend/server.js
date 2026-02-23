@@ -41,7 +41,20 @@ app.post("/autos", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+app.delete("/autos/:id", async (req, res) => {
+  try {
+    const autoEliminado = await Auto.findByIdAndDelete(req.params.id);
 
+    if (!autoEliminado) {
+      return res.status(404).json({ error: "Auto no encontrado" });
+    }
+
+    res.json({ mensaje: "Auto eliminado correctamente 🚗" });
+  } catch (error) {
+    console.error("ERROR DELETE:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
 // Puerto
 const PORT = process.env.PORT || 3000;
 
