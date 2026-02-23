@@ -36,9 +36,9 @@ app.post("/autos", async (req, res) => {
     await nuevoAuto.save();
     res.status(201).json(nuevoAuto);
   } catch (error) {
-    res.status(500).json({ error: "Error al guardar auto" });
-  }
-});
+  console.error("ERROR DETALLADO:", error);
+  res.status(500).json({ error: error.message });
+}
 
 // Puerto
 const PORT = process.env.PORT || 3000;
