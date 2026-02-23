@@ -55,6 +55,24 @@ app.delete("/autos/:id", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+app.put("/autos/:id", async (req, res) => {
+  try {
+    const autoActualizado = await Auto.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+
+    if (!autoActualizado) {
+      return res.status(404).json({ error: "Auto no encontrado" });
+    }
+
+    res.json(autoActualizado);
+  } catch (error) {
+    console.error("ERROR UPDATE:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
 // Puerto
 const PORT = process.env.PORT || 3000;
 
