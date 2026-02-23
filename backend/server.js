@@ -26,7 +26,8 @@ app.get("/autos", async (req, res) => {
     const autos = await Auto.find();
     res.json(autos);
   } catch (error) {
-    res.status(500).json({ error: "Error al obtener autos" });
+    console.error("ERROR DETALLADO:", error);
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -36,9 +37,10 @@ app.post("/autos", async (req, res) => {
     await nuevoAuto.save();
     res.status(201).json(nuevoAuto);
   } catch (error) {
-  console.error("ERROR DETALLADO:", error);
-  res.status(500).json({ error: error.message });
-}
+    console.error("ERROR DETALLADO:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
 
 // Puerto
 const PORT = process.env.PORT || 3000;
