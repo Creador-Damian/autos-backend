@@ -53,15 +53,9 @@ app.use(express.json());
 // =========================
 
 mongoose.connect(process.env.MONGO_URI, {
+  dbName: "vehiculos",
   serverSelectionTimeoutMS: 10000
 })
-.then(() => {
-  console.log("✅ Conectado a MongoDB 🚀");
-})
-.catch(err => {
-  console.error("❌ Error conectando a MongoDB:", err.message);
-});
-
 // =========================
 // RUTAS
 // =========================
