@@ -10,6 +10,18 @@ const cloudinary = require("cloudinary").v2;
 const app = express();
 
 // =========================
+// VALIDACIÓN VARIABLES
+// =========================
+
+if (!process.env.MONGO_URI) {
+  console.error("❌ ERROR: MONGO_URI no está definida en Render");
+}
+
+if (!process.env.CLOUDINARY_CLOUD_NAME) {
+  console.error("❌ ERROR: Cloudinary no está configurado");
+}
+
+// =========================
 // CONFIG CLOUDINARY
 // =========================
 
@@ -37,14 +49,18 @@ app.use(cors());
 app.use(express.json());
 
 // =========================
-// CONEXIÓN MONGO
+// CONEXIÓN MONGO (MEJORADA)
 // =========================
 
-const uri = process.env.MONGO_URI;
-
-mongoose.connect(uri)
-  .then(() => console.log("Conectado a MongoDB 🚀"))
-  .catch(err => console.error("Error real:", err));
+mongoose.connect(process.env.MONGO_URI, {
+  serverSelectionTimeoutMS: 10000
+})
+.then(() => {
+  console.log("✅ Conectado a MongoDB 🚀");
+})
+.catch(err => {
+  console.error("❌ Error conectando a MongoDB:", err.message);
+});
 
 // =========================
 // RUTAS
@@ -60,27 +76,28 @@ app.get("/autos", async (req, res) => {
     const autos = await Auto.find();
     res.json(autos);
   } catch (error) {
-    console.error("ERROR GET:", error);
+    console.error("ERROR GET:", error.message);
     res.status(500).json({ error: error.message });
   }
 });
 
-// 🔹 CREAR AUTO CON IMAGEN
+// 🔹 CREAR AUTO
 app.post("/autos", upload.single("imagen"), async (req, res) => {
   try {
+
     const nuevoAuto = new Auto({
       marca: req.body.marca,
       modelo: req.body.modelo,
-      anio: req.body.anio,
-      precio: req.body.precio,
-      imagen: req.file.path // URL de Cloudinary
+      anio: Number(req.body.anio),
+      precio: Number(req.body.precio),
+      imagen: req.file ? req.file.path : null
     });
 
     await nuevoAuto.save();
     res.status(201).json(nuevoAuto);
 
   } catch (error) {
-    console.error("ERROR CREATE:", error);
+    console.error("ERROR CREATE:", error.message);
     res.status(500).json({ error: error.message });
   }
 });
@@ -96,7 +113,7 @@ app.delete("/autos/:id", async (req, res) => {
 
     res.json({ mensaje: "Auto eliminado correctamente 🚗" });
   } catch (error) {
-    console.error("ERROR DELETE:", error);
+    console.error("ERROR DELETE:", error.message);
     res.status(500).json({ error: error.message });
   }
 });
@@ -116,7 +133,7 @@ app.put("/autos/:id", async (req, res) => {
 
     res.json(autoActualizado);
   } catch (error) {
-    console.error("ERROR UPDATE:", error);
+    console.error("ERROR UPDATE:", error.message);
     res.status(500).json({ error: error.message });
   }
 });
@@ -128,5 +145,5 @@ app.put("/autos/:id", async (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en puerto ${PORT} 🚀`);
+  console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
 });
