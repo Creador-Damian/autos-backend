@@ -1,28 +1,13 @@
 const Auto = require("./models/Auto");
 const express = require("express");
 const cors = require("cors");
-const { MongoClient } = require("mongodb");
-
-const app = express();
-
-app.use(cors());
+const mongoose = require("mongoose");
 
 const uri = process.env.MONGO_URI;
 
-console.log("URI usada:", uri);
-
-const client = new MongoClient(uri);
-
-async function connectDB() {
-  try {
-    await client.connect();
-    console.log("Conectado sin SRV 🚀");
-  } catch (error) {
-    console.error("Error real:", error);
-  }
-}
-
-connectDB();
+mongoose.connect(uri)
+  .then(() => console.log("Conectado a MongoDB 🚀"))
+  .catch(err => console.error("Error real:", err));
 app.get("/", (req, res) => {
   res.send("Backend de Autos funcionando correctamente 🚀");
 });
