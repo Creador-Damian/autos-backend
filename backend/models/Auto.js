@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const AutoSchema = new mongoose.Schema({
   marca: String,
   modelo: String,
-  año: Number,
+  anio: Number,
   precio: Number,
   imagen: String
 });
