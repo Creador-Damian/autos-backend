@@ -70,7 +70,7 @@ h1 {
     color: #c9a227;
 }
 .showroom {
-    background: url("showroom.jpeg") no-repeat center center/cover;
+    background: url("imagenes/showroom.png") no-repeat center center/cover;
     height: 80vh;
     position: relative;
     display: flex;
@@ -79,10 +79,11 @@ h1 {
 }
 
 .overlay {
-    background: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0,0,0,0.85);
     padding: 40px;
     text-align: center;
     border-radius: 10px;
+    backdrop-filter: blur(6px);
 }
 
 .showroom h2 {
@@ -98,7 +99,8 @@ h1 {
 .btn-showroom {
     background-color: #c9a227;
     color: black;
-    padding: 14px 25px;
+    padding: 14px 30px;
+    font-size: 18px;
     border-radius: 5px;
     text-decoration: none;
     font-weight: 600;
@@ -388,4 +390,28 @@ footer {
 
 .link-detalle:hover {
     color: #e6c200;
+}
+.hero {
+    background-color: #000;
+    text-align: center;
+    padding: 80px 20px 100px 20px;
+}
+
+.logo-principal {
+    width: 420px;
+    max-width: 90%;
+    margin-bottom: 40px;
+}
+
+.titulo-principal {
+    font-size: 54px;
+    font-weight: 800;
+    color: #e0c110;
+    margin-bottom: 20px;
+}
+
+.subtitulo {
+    font-size: 40px;
+    font-weight: 600;
+    color: #d3d019;
 }

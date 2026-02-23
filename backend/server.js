@@ -1,3 +1,4 @@
+const Auto = require("./models/Auto");
 const express = require("express");
 const cors = require("cors");
 const { MongoClient } = require("mongodb");
@@ -6,7 +7,7 @@ const app = express();
 
 app.use(cors());
 
-const uri = process.env.MONGODB_URI;
+const uri = process.env.MONGO_URI;
 
 console.log("URI usada:", uri);
 
@@ -26,14 +27,25 @@ app.get("/", (req, res) => {
   res.send("Backend de Autos funcionando correctamente 🚀");
 });
 
-app.get("/autos", (req, res) => {
-  res.json([
-    { marca: "Toyota", modelo: "Corolla", año: 2022, precio: 15000 },
-    { marca: "Ford", modelo: "Focus", año: 2021, precio: 13000 },
-    { marca: "Chevrolet", modelo: "Cruze", año: 2023, precio: 18000 }
-  ]);
+  app.get("/autos", async (req, res) => {
+  try {
+    const autos = await Auto.find();
+    res.json(autos);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener autos" });
+  }
 });
+app.use(express.json());
 
+app.post("/autos", async (req, res) => {
+  try {
+    const nuevoAuto = new Auto(req.body);
+    await nuevoAuto.save();
+    res.status(201).json(nuevoAuto);
+  } catch (error) {
+    res.status(500).json({ error: "Error al guardar auto" });
+  }
+});
 const PORT = process.env.PORT || 3000;
 
 

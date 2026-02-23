@@ -1,18 +1,30 @@
 fetch("https://autos-backend-8wzv.onrender.com/autos")
-    .then(response => response.json())
-    .then(data => {
-        const contenedor = document.getElementById("vehiculos");
+  .then(response => response.json())
+  .then(data => {
 
-        data.forEach(auto => {
-            const autoHTML = `
-                <div class="auto">
-                    <h2>${auto.marca} ${auto.modelo}</h2>
-                    <p>Año: ${auto.año}</p>
-                    <p>Precio: $${auto.precio}</p>
-                </div>
-            `;
+    const contenedor = document.getElementById("vehiculos");
 
-            contenedor.innerHTML += autoHTML;
-        });
-    })
-    .catch(error => console.error("Error:", error));
+    contenedor.innerHTML = ""; // limpia antes de cargar
+
+    data.forEach(auto => {
+
+      contenedor.innerHTML += `
+        <div class="auto-card">
+
+          <div class="auto-img">
+            <img src="${auto.imagen}" alt="${auto.marca} ${auto.modelo}">
+          </div>
+
+          <div class="auto-info">
+            <h3>${auto.marca} ${auto.modelo}</h3>
+            <p>Año: ${auto.año}</p>
+            <p>Precio: $${auto.precio}</p>
+          </div>
+
+        </div>
+      `;
+
+    });
+
+  })
+  .catch(error => console.error("Error:", error));
