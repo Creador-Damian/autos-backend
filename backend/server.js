@@ -14,11 +14,7 @@ const app = express();
 // =========================
 
 if (!process.env.MONGO_URI) {
-  console.error("❌ ERROR: MONGO_URI no está definida en Render");
-}
-
-if (!process.env.CLOUDINARY_CLOUD_NAME) {
-  console.error("❌ ERROR: Cloudinary no está configurado");
+  console.error("❌ ERROR: MONGO_URI no está definida");
 }
 
 // =========================
@@ -49,13 +45,24 @@ app.use(cors());
 app.use(express.json());
 
 // =========================
-// CONEXIÓN MONGO (MEJORADA)
+// CONEXIÓN MONGO (OPTIMIZADA)
 // =========================
+
+mongoose.set("strictQuery", false);
 
 mongoose.connect(process.env.MONGO_URI, {
   dbName: "vehiculos",
-  serverSelectionTimeoutMS: 10000
+  serverSelectionTimeoutMS: 30000,
+  socketTimeoutMS: 45000,
+  family: 4
 })
+.then(() => {
+  console.log("✅ Conectado a MongoDB 🚀");
+})
+.catch(err => {
+  console.error("❌ Error conectando a MongoDB:", err.message);
+});
+
 // =========================
 // RUTAS
 // =========================
@@ -67,10 +74,10 @@ app.get("/", (req, res) => {
 // 🔹 OBTENER AUTOS
 app.get("/autos", async (req, res) => {
   try {
-    const autos = await Auto.find();
+    const autos = await Auto.find().lean();
     res.json(autos);
   } catch (error) {
-    console.error("ERROR GET:", error.message);
+    console.error("❌ ERROR GET:", error.message);
     res.status(500).json({ error: error.message });
   }
 });
@@ -91,7 +98,7 @@ app.post("/autos", upload.single("imagen"), async (req, res) => {
     res.status(201).json(nuevoAuto);
 
   } catch (error) {
-    console.error("ERROR CREATE:", error.message);
+    console.error("❌ ERROR CREATE:", error.message);
     res.status(500).json({ error: error.message });
   }
 });
@@ -107,7 +114,7 @@ app.delete("/autos/:id", async (req, res) => {
 
     res.json({ mensaje: "Auto eliminado correctamente 🚗" });
   } catch (error) {
-    console.error("ERROR DELETE:", error.message);
+    console.error("❌ ERROR DELETE:", error.message);
     res.status(500).json({ error: error.message });
   }
 });
@@ -127,7 +134,7 @@ app.put("/autos/:id", async (req, res) => {
 
     res.json(autoActualizado);
   } catch (error) {
-    console.error("ERROR UPDATE:", error.message);
+    console.error("❌ ERROR UPDATE:", error.message);
     res.status(500).json({ error: error.message });
   }
 });
